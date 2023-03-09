@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*", websocket=True)
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000","https://paisley-ui-hycvm.ondigitalocean.app"]}})
 
 def chat_stream(messages):
     bot = StreamBot(os.getenv('OPENAI_KEY'), "Paisley", genesis_prompt="You are a helpful translator.")
@@ -55,4 +55,4 @@ def reset_chat():
     return jsonify(True)
 
 if __name__ == '__main__':
-    app.run(port=8001, debug=True)
+    app.run()
