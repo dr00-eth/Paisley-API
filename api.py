@@ -42,7 +42,7 @@ def handle_messages():
         response = ""
         for event in chat_stream(messages[connection_id]):
             response += event
-            socketio.to(connection_id).emit('message', {'message': event, 'connection_id': connection_id}, broadcast=True)
+            socketio.emit('message', {'message': event, 'connection_id': connection_id}, room=conversation_id, broadcast=True)
         messages[connection_id].append({"role": "assistant", "content": response})
         return jsonify(messages[connection_id])
 
