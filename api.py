@@ -55,4 +55,4 @@ def reset_chat():
     return jsonify(True)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=80)
