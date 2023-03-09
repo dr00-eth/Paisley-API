@@ -4,6 +4,7 @@ import os
 
 bot = StreamBot(os.getenv('OPENAI_KEY'), "Paisley", genesis_prompt="You are a helpful translator.")
 bot.add_message("Great, you will help me translate some words from English to Spanish.")
+bot.add_message("OK, I will only help you with translations from English to Spanish and reject any other requests", "assistant")
 
 server = StreamBotAPI(bot, origins=["http://localhost:3000","https://paisley-ui-hycvm.ondigitalocean.app"])
 
