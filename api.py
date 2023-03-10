@@ -1,11 +1,14 @@
 from streambotapi import StreamBotAPI
 from streambot import StreamBot
+import constants
 import os
 
-bot = StreamBot(os.getenv('OPENAI_KEY'), "Paisley", genesis_prompt="You are a helpful translator.")
-bot.add_message("Great, you will help me translate some words from English to Spanish.")
-bot.add_message("OK, I will only help you with translations from English to Spanish and reject any other requests. I will let you know if you violate my rules.", "assistant")
+#Prompt 0 - Listing Bot
+streambot1 = StreamBot(os.getenv('OPENAI_KEY'), "Paisley", genesis_prompt=constants.OPENAI_PROMPT[0])
 
-server = StreamBotAPI(bot, origins=["http://localhost:3000","https://paisley-ui-hycvm.ondigitalocean.app"])
+#Prompt 1 - Neighborhood Bot
+streambot2 = StreamBot(os.getenv('OPENAI_KEY'), "Paisley", genesis_prompt=constants.OPENAI_PROMPT[1])
+
+server = StreamBotAPI([streambot1,streambot2], origins=["http://localhost:3000","https://paisley-ui-hycvm.ondigitalocean.app"])
 
 server.start()
