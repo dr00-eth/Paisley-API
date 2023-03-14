@@ -22,6 +22,9 @@ streambot1 = StreamBot(os.getenv('OPENAI_KEY'), "Paisley", genesis_prompt=consta
 #Prompt 1 - Neighborhood Bot
 streambot2 = StreamBot(os.getenv('OPENAI_KEY'), "Paisley", genesis_prompt=constants.OPENAI_PROMPT[1])
 
-server = StreamBotAPI([streambot1,streambot2], origins=["http://localhost:3000","https://paisley-ui-hycvm.ondigitalocean.app"], verbosity=1, log_file="chatserver.log")
+#Prompt 2 - Coaching Bot
+streambot3 = StreamBot(os.getenv('OPENAI_KEY'), "Paisley", genesis_prompt=constants.OPENAI_PROMPT[2])
+
+server = StreamBotAPI([streambot1,streambot2, streambot3], origins=["http://localhost:3000","https://paisley-ui-hycvm.ondigitalocean.app"], verbosity=1, log_file="chatserver.log")
 
 server.start()
