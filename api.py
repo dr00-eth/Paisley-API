@@ -5,7 +5,6 @@ import os
 import logging
 
 openaikey = os.getenv('OPENAI_KEY')
-logtailkey = os.getenv('LOGTAIL_KEY')
 
 #Prompt 0 - Listing Bot
 streambot1 = StreamBot(openaikey, "Paisley", genesis_prompt=constants.OPENAI_PROMPT[0])
