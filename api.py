@@ -6,13 +6,11 @@ import logging
 
 openaikey = os.getenv('OPENAI_KEY')
 
-config = StreamBotConfig(temperature=0.7)
-
 #Prompt 0 - Listing Bot
-streambot1 = StreamBot(openaikey, "Paisley", genesis_prompt=constants.OPENAI_PROMPT[0], config=config)
+streambot1 = StreamBot(openaikey, "Paisley", genesis_prompt=constants.OPENAI_PROMPT[0])
 
 #Prompt 1 - Neighborhood Bot
-streambot2 = StreamBot(openaikey, "Paisley", genesis_prompt=constants.OPENAI_PROMPT[1], config=config)
+streambot2 = StreamBot(openaikey, "Paisley", genesis_prompt=constants.OPENAI_PROMPT[1])
 
 #Prompt 2 - Coaching Bot
 streambot3 = StreamBot(openaikey, "Paisley", genesis_prompt=constants.OPENAI_PROMPT[2])
@@ -24,7 +22,7 @@ streambot4 = StreamBot(openaikey, "Paisley", genesis_prompt=constants.OPENAI_PRO
 streambot5 = StreamBot(openaikey, "Paisley", genesis_prompt=constants.OPENAI_PROMPT[4])
 
 #Prompt 5 - Pre-Listing Bot
-streambot6 = StreamBot(openaikey, "Paisley", genesis_prompt=constants.OPENAI_PROMPT[5], config=config)
+streambot6 = StreamBot(openaikey, "Paisley", genesis_prompt=constants.OPENAI_PROMPT[5])
 
 server = StreamBotAPI([streambot1,streambot2, streambot3, streambot4, streambot5, streambot6], origins=["http://localhost:3000","https://paisley-ui-develop-arxkt.ondigitalocean.app","https://paisley-proto.thegenie.ai"], verbosity=1, debug=False, allow_model_override=True, port=443)
 
